@@ -1,0 +1,18 @@
+services:
+  opengrok:
+    # 使用当前目录的 Dockerfile 构建镜像
+    build: .
+    image: opengrok
+    container_name: opengrok
+
+    ports:
+      - "8080:8080"
+
+    # 使用相对于 docker-compose.yml 文件的路径
+    # 这使得项目可以轻松地移动到其他目录或机器上
+    volumes:
+      - "./runtime/opengrok/src:/opengrok/src"
+      - "./runtime/opengrok/data:/opengrok/data"
+      - "./runtime/opengrok/etc:/opengrok/etc"
+
+    restart: unless-stopped

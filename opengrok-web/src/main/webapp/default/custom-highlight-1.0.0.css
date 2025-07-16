@@ -1,0 +1,214 @@
+/**
+ * Custom Highlight Extension CSS
+ * 自定义高亮扩展样式
+ */
+
+/* 基础自定义高亮样式 */
+.custom-highlight {
+    border-radius: 3px;
+    padding: 1px 2px;
+    margin: 0 1px;
+    transition: all 0.2s ease;
+    position: relative;
+    display: inline;
+}
+
+.custom-highlight:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+/* 自定义高亮颜色方案 */
+.custom-highlight-color-1 {
+    background-color: #ffeb3b; /* 黄色 */
+    color: #333;
+    border: 1px solid #fbc02d;
+}
+
+.custom-highlight-color-2 {
+    background-color: #4caf50; /* 绿色 */
+    color: white;
+    border: 1px solid #388e3c;
+}
+
+.custom-highlight-color-3 {
+    background-color: #2196f3; /* 蓝色 */
+    color: white;
+    border: 1px solid #1976d2;
+}
+
+.custom-highlight-color-4 {
+    background-color: #e91e63; /* 粉红色 */
+    color: white;
+    border: 1px solid #c2185b;
+}
+
+.custom-highlight-color-5 {
+    background-color: #ff9800; /* 橙色 */
+    color: white;
+    border: 1px solid #f57c00;
+}
+
+.custom-highlight-color-6 {
+    background-color: #9c27b0; /* 紫色 */
+    color: white;
+    border: 1px solid #7b1fa2;
+}
+
+.custom-highlight-color-7 {
+    background-color: #607d8b; /* 蓝灰色 */
+    color: white;
+    border: 1px solid #455a64;
+}
+
+.custom-highlight-color-8 {
+    background-color: #795548; /* 棕色 */
+    color: white;
+    border: 1px solid #5d4037;
+}
+
+/* 重要级别的高亮（带动画） */
+.custom-highlight-color-critical {
+    background-color: #f44336; /* 红色 */
+    color: white;
+    border: 2px solid #d32f2f;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+    }
+}
+
+/* 工具提示样式 */
+.custom-highlight-tooltip {
+    cursor: help;
+}
+
+.custom-highlight-tooltip:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1000;
+    font-size: 12px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.custom-highlight-tooltip:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+}
+
+/* 通知样式 */
+.custom-highlight-notification {
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.custom-highlight-notification:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 键盘快捷键提示 */
+.custom-highlight-help {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 1000;
+    max-width: 200px;
+    line-height: 1.4;
+}
+
+.custom-highlight-help kbd {
+    background: #555;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    margin: 0 2px;
+}
+
+/* 暗色主题适配 */
+@media (prefers-color-scheme: dark) {
+    .custom-highlight-color-1 {
+        background-color: #f9a825;
+        color: #000;
+    }
+    
+    .custom-highlight-notification {
+        background: #2e7d32 !important;
+    }
+    
+    .custom-highlight-tooltip:hover::after {
+        background: rgba(255, 255, 255, 0.9);
+        color: black;
+    }
+    
+    .custom-highlight-tooltip:hover::before {
+        border-top-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* 打印时隐藏高亮效果 */
+@media print {
+    .custom-highlight {
+        background: none !important;
+        border: none !important;
+        color: inherit !important;
+        box-shadow: none !important;
+        animation: none !important;
+    }
+    
+    .custom-highlight-notification,
+    .custom-highlight-help {
+        display: none !important;
+    }
+}
+
+/* 高对比度模式适配 */
+@media (prefers-contrast: high) {
+    .custom-highlight {
+        border-width: 2px;
+        font-weight: bold;
+    }
+}
+
+/* 减少动画模式适配 */
+@media (prefers-reduced-motion: reduce) {
+    .custom-highlight,
+    .custom-highlight-notification {
+        transition: none;
+        animation: none;
+    }
+    
+    .custom-highlight:hover {
+        transform: none;
+    }
+} 

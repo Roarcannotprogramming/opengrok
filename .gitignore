@@ -60,3 +60,8 @@ pmd.bat
 .classpath
 .checkstyle
 .tox
+
+
+# runtime 中只保留 runtime/.placeholder, 其他都忽略
+runtime/*
+!runtime/.placeholder
